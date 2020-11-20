@@ -225,7 +225,7 @@ String basePath = request.getScheme() +"://"+request.getServerName()+":"+request
 	<div id="operation" style="position: relative; left: 40px; height: 35px; top: 100px;">
 		<input class="btn btn-primary" type="button" value="转换" id="convertBtn">
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input class="btn btn-default" type="button" value="取消">
+		<input class="btn btn-default" type="button" value="取消" onclick="window.history.back();">
 	</div>
 </body>
 </html>

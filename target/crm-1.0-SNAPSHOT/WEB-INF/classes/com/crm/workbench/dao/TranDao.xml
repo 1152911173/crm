@@ -93,6 +93,12 @@
         from tbl_tran
         group by stage
     </select>
+    <select id="getTransactionListByCid" resultType="Tran">
+        select * from tbl_tran where customerId=#{customerId}
+    </select>
+    <delete id="deleteById">
+        delete from tbl_tran where id=#{id}
+    </delete>
 </mapper>
 
 

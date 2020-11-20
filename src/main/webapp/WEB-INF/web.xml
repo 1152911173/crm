@@ -76,6 +76,14 @@
         <url-pattern>/workbench/clue/bund.do</url-pattern>
         <url-pattern>/workbench/clue/getActivityListByName.do</url-pattern>
         <url-pattern>/workbench/clue/convert.do</url-pattern>
+        <url-pattern>/workbench/clue/getClueById.do</url-pattern>
+        <url-pattern>/workbench/clue/pageList.do</url-pattern>
+        <url-pattern>/workbench/clue/update.do</url-pattern>
+        <url-pattern>/workbench/clue/delete.do</url-pattern>
+        <url-pattern>/workbench/clue/getRemarkListByClueId.do</url-pattern>
+        <url-pattern>/workbench/clue/saveRemark.do</url-pattern>
+        <url-pattern>/workbench/clue/updateRemark.do</url-pattern>
+        <url-pattern>/workbench/clue/deleteRemark.do</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>tranController</servlet-name>
@@ -90,5 +98,29 @@
         <url-pattern>/workbench/transaction/getHistoryListByTranId.do</url-pattern>
         <url-pattern>/workbench/transaction/changeStage.do</url-pattern>
         <url-pattern>/workbench/transaction/getCharts.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>cusController</servlet-name>
+        <servlet-class>com.crm.workbench.web.controller.CusController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cusController</servlet-name>
+        <url-pattern>/workbench/customer/getUserList.do</url-pattern>
+        <url-pattern>/workbench/customer/save.do</url-pattern>
+        <url-pattern>/workbench/customer/pageList.do</url-pattern>
+        <url-pattern>/workbench/customer/edit.do</url-pattern>
+        <url-pattern>/workbench/customer/update.do</url-pattern>
+        <url-pattern>/workbench/customer/delete.do</url-pattern>
+        <url-pattern>/workbench/customer/detail.do</url-pattern>
+        <url-pattern>/workbench/customer/getRemarkListByCid.do</url-pattern>
+        <url-pattern>/workbench/customer/deleteRemark.do</url-pattern>
+        <url-pattern>/workbench/customer/saveRemark.do</url-pattern>
+        <url-pattern>/workbench/customer/updateRemark.do</url-pattern>
+        <url-pattern>/workbench/customer/getTransactionListByCid.do</url-pattern>
+        <url-pattern>/workbench/customer/deleteTransactionById.do</url-pattern>
+        <url-pattern>/workbench/customer/getContactListByCid.do</url-pattern>
+        <url-pattern>/workbench/customer/deleteContactById.do</url-pattern>
+        <url-pattern>/workbench/customer/getCustomerName.do</url-pattern>
+        <url-pattern>/workbench/customer/saveContact.do</url-pattern>
     </servlet-mapping>
 </web-app>

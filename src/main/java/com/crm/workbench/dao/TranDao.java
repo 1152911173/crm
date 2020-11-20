@@ -16,4 +16,8 @@ public interface TranDao {
     int getTotal();
 
     List<Map<String, Object>> getCharts();
+
+    List<Tran> getTransactionListByCid(String id);
+
+    int deleteById(String id);
 }

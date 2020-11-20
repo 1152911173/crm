@@ -21,7 +21,34 @@
             #{customerId}
         )
     </insert>
-  	
+    <select id="getRemarkListByCid" resultType="CustomerRemark">
+        select * from tbl_customer_remark where customerId=#{id}
+    </select>
+    <delete id="deleteRemark">
+        delete from tbl_customer_remark where Id=#{id}
+    </delete>
+    <insert id="saveRemark" >
+        insert into tbl_customer_remark(
+            id,
+            noteContent,
+            createTime,
+            createBy,
+            editFlag,
+            customerId
+        )values(
+            #{id},
+            #{noteContent},
+            #{createTime},
+            #{createBy},
+            #{editFlag},
+            #{customerId}
+            )
+    </insert>
+    <update id="updateRemark">
+        update tbl_customer_remark
+        set noteContent=#{noteContent},editBy=#{editBy},editTime=#{editTime},editFlag=#{editFlag}
+        where id=#{id}
+    </update>
 </mapper>
 
 

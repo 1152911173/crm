@@ -118,6 +118,27 @@ public class TranServiceImpl implements TranService {
         map.put("dataList",dataList);
         return map;
     }
+
+    @Override
+    public List<Tran> getTransactionListByCid(String customerId) {
+        List<Tran> tList = tranDao.getTransactionListByCid(customerId);
+        return tList;
+    }
+
+    @Override
+    public boolean deleteTransactionById(String id) {
+        boolean flag = true;
+        int count1 = tranHistoryDao.totalByTranId(id);
+        int count2 = tranHistoryDao.deleteByTranId(id);
+        if(count1 != count2){
+            flag = false;
+        }
+        int count3 = tranDao.deleteById(id);
+        if(count3!=1){
+            flag = false;
+        }
+        return flag;
+    }
 }
 
 

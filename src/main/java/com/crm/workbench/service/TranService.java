@@ -16,4 +16,8 @@ public interface TranService {
     boolean changeStage(Tran t);
 
     Map<String, Object> getCharts();
+
+    List<Tran> getTransactionListByCid(String customerId);
+
+    boolean deleteTransactionById(String id);
 }

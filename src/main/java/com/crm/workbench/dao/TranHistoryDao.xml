@@ -4,6 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.crm.workbench.dao.TranHistoryDao">
+    <delete id="deleteByTranId" >
+        delete from tbl_tran_history where tranId=#{id}
+    </delete>
+    <select id="totalByTranId" resultType="int">
+        select count(*) from tbl_tran_history where tranId=#{id}
+    </select>
     <select id="getHistoryListByTranId" resultType="TranHistory">
         select * from tbl_tran_history where tranId=#{tranId}
     </select>

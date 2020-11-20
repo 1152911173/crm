@@ -3,11 +3,13 @@ package com.crm.workbench.service.impl;
 import com.crm.utils.DateTimeUtil;
 import com.crm.utils.SqlSessionUtil;
 import com.crm.utils.UUIDUtil;
+import com.crm.vo.PaginationVO;
 import com.crm.workbench.dao.*;
 import com.crm.workbench.domain.*;
 import com.crm.workbench.service.ClueService;
 
 import java.util.List;
+import java.util.Map;
 
 public class ClueServiceImpl implements ClueService {
     //线索相关表
@@ -224,6 +226,93 @@ public class ClueServiceImpl implements ClueService {
             flag = false;
         }
 
+        return flag;
+    }
+
+    @Override
+    public Clue getClueById(String id) {
+        Clue c = clueDao.getById(id);
+        return c;
+    }
+
+    @Override
+    public PaginationVO<Clue> pageList(Map<String, Object> map) {
+        //取得total
+        int total = clueDao.getTotalByCondition(map);
+        //取得dataList
+        List<Clue> dataList = clueDao.getClueListByCondition(map);
+        //封装进vo中
+        PaginationVO<Clue> vo = new PaginationVO<>();
+        vo.setTotal(total);
+        vo.setDataList(dataList);
+        return vo;
+    }
+
+    @Override
+    public boolean update(Clue clue) {
+        boolean flag = true;
+        int count = clueDao.update(clue);
+        if(count!=1){
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean delete(String[] ids) {
+        boolean flag = true;
+        for(String id : ids){
+            int count1 = clueDao.delete(id);
+            if(count1!=1){
+                flag = false;
+            }
+            int count2 = clueRemarkDao.getTotalByCid(id);
+            int count3 = clueRemarkDao.deleteByCid(id);
+            if(count2!=count3){
+                flag = false;
+            }
+            int count4 = clueActivityRelationDao.getTotalByCid(id);
+            int count5 = clueActivityRelationDao.deleteByCid(id);
+            if(count4!=count5){
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public List<ClueRemark> getRemarkListByClueId(String clueId) {
+        List<ClueRemark> cList = clueRemarkDao.geListByClueId(clueId);
+        return cList;
+    }
+
+    @Override
+    public boolean saveRemark(ClueRemark cr) {
+        boolean flag = true;
+        int count = clueRemarkDao.saveRemark(cr);
+        if(count != 1){
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean updateRemark(ClueRemark cr) {
+        boolean flag = true;
+        int count = clueRemarkDao.updateRemark(cr);
+        if(count!=1){
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean deleteRemark(String id) {
+        boolean flag = true;
+        int count = clueRemarkDao.deleteRemark(id);
+        if(count!=1){
+            flag = false;
+        }
         return flag;
     }
 }
